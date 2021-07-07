@@ -1,25 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function UserList() {
+  const [users, setUsers] = useState([]);
   const apiURL =
     "https://va3zdlc81i.execute-api.us-east-1.amazonaws.com/dev/users";
 
   useEffect(() => {
     axios.get(apiURL).then((response) => {
-      console.log("line12", ...response.data.data);
+      //   console.log(...response.data.data);
+      const data = [...response.data.data];
+      //   setUsers[response];
+      console.log(data);
+      setUsers(data);
     });
-    //   .then((responseJSON) => {
-    //     const userData = [...responseJSON.data];
-    //     console.log("line 16", userData);
-    //   });
-    //   .then((JSON.response) => {
-    //     JSONResponse
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   }, []);
-  return <div>{/* <p>{firstName}</p> */}</div>;
+  return <div>{/* <p>Hello {users}</p> */}</div>;
 }
 export default UserList;
