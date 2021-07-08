@@ -7,14 +7,28 @@ function UserList() {
     "https://va3zdlc81i.execute-api.us-east-1.amazonaws.com/dev/users";
 
   useEffect(() => {
-    axios.get(apiURL).then((response) => {
-      //   console.log(...response.data.data);
-      const data = [...response.data.data];
-      //   setUsers[response];
-      console.log(data);
-      setUsers(data);
-    });
+    axios
+      .get(apiURL)
+      .then((res) => {
+        //   console.log(...response.data.data);
+        console.log(res);
+        const exactUsers = res.data.data;
+        console.log(exactUsers);
+        setUsers(exactUsers);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
-  return <div>{/* <p>Hello {users}</p> */}</div>;
+
+  return (
+    <div>
+      <ul>
+        {users.map((user) => (
+          <li key={user.Id}>{user.First_Name}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 export default UserList;
