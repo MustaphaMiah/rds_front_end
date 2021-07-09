@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Axios / RDS Test</h1>
+        <h1>Horizont Labs - Developers</h1>
       </header>
       <UserList />
     </div>
